@@ -12,16 +12,16 @@
 <meta name="author" content="Emerg — Wicked Entertainment Network">
 <meta name="robots" content="index, follow">
 <meta name="theme-color" content="#c8102e">
-<link rel="canonical" href="https://emergmusic.netlify.app/">
+<link rel="canonical" href="https://emergmusic.com/">
 
 <!-- ═══════════════════════════════════════
      SEO — Open Graph (Facebook, WhatsApp, iMessage)
 ════════════════════════════════════════ -->
 <meta property="og:type" content="music.musician">
-<meta property="og:url" content="https://emergmusic.netlify.app/">
+<meta property="og:url" content="https://emergmusic.com/">
 <meta property="og:title" content="EMERG — Pilsen's Own | Chicano Rap | Chicago, IL">
 <meta property="og:description" content="Chicago rapper Emerg brings Chicano Rap & Latin Hip-Hop from Pilsen to the world. Debut album Wicked Since 93 coming soon on Wicked Entertainment Network.">
-<meta property="og:image" content="https://emergmusic.netlify.app/images/og-card.jpg">
+<meta property="og:image" content="https://emergmusic.com/images/og-card.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Emerg — Pilsen's Own, Chicago IL. Chicano Rap / Latin Hip-Hop">
@@ -32,10 +32,10 @@
      SEO — Twitter / X Card
 ════════════════════════════════════════ -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:url" content="https://emergmusic.netlify.app/">
+<meta name="twitter:url" content="https://emergmusic.com/">
 <meta name="twitter:title" content="EMERG — Pilsen's Own | Chicano Rap | Chicago, IL">
 <meta name="twitter:description" content="Chicago rapper Emerg brings Chicano Rap & Latin Hip-Hop from Pilsen to the world. Debut album Wicked Since 93 coming soon.">
-<meta name="twitter:image" content="https://emergmusic.netlify.app/images/og-card.jpg">
+<meta name="twitter:image" content="https://emergmusic.com/images/og-card.jpg">
 <meta name="twitter:site" content="@emerg_one">
 <meta name="twitter:creator" content="@emerg_one">
 
@@ -49,12 +49,12 @@
   "@graph": [
     {
       "@type": "MusicGroup",
-      "@id": "https://emergmusic.netlify.app/#artist",
+      "@id": "https://emergmusic.com/#artist",
       "name": "Emerg",
       "alternateName": ["Emerg One", "Emerg Chicago"],
       "description": "Emerg is a Chicago rapper and Chicano Rap / Latin Hip-Hop artist from the Pilsen neighborhood, signed to Wicked Entertainment Network.",
-      "url": "https://emergmusic.netlify.app/",
-      "image": "https://emergmusic.netlify.app/images/emerg-patch.png",
+      "url": "https://emergmusic.com/",
+      "image": "https://emergmusic.com/images/emerg-patch.png",
       "genre": ["Chicano Rap", "Latin Hip-Hop", "Hip-Hop"],
       "foundingLocation": {
         "@type": "Place",
@@ -84,9 +84,9 @@
     },
     {
       "@type": "MusicAlbum",
-      "@id": "https://emergmusic.netlify.app/#album",
+      "@id": "https://emergmusic.com/#album",
       "name": "Wicked Since 93",
-      "byArtist": {"@id": "https://emergmusic.netlify.app/#artist"},
+      "byArtist": {"@id": "https://emergmusic.com/#artist"},
       "recordLabel": "Wicked Entertainment Network",
       "catalogNumber": "WKD2601",
       "genre": ["Chicano Rap", "Latin Hip-Hop"],
@@ -94,14 +94,14 @@
     },
     {
       "@type": "WebSite",
-      "@id": "https://emergmusic.netlify.app/#website",
-      "url": "https://emergmusic.netlify.app/",
+      "@id": "https://emergmusic.com/#website",
+      "url": "https://emergmusic.com/",
       "name": "Emerg — Official Site",
       "description": "Official website for Chicago rapper Emerg — Chicano Rap & Latin Hip-Hop from Pilsen, Chicago.",
-      "publisher": {"@id": "https://emergmusic.netlify.app/#artist"},
+      "publisher": {"@id": "https://emergmusic.com/#artist"},
       "potentialAction": {
         "@type": "SearchAction",
-        "target": "https://emergmusic.netlify.app/?q={search_term_string}",
+        "target": "https://emergmusic.com/?q={search_term_string}",
         "query-input": "required name=search_term_string"
       }
     }
@@ -131,7 +131,9 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
 
 /* AUDIO BAR */
 #audioBar{position:fixed;bottom:0;left:0;right:0;z-index:9000;background:linear-gradient(90deg,#0a1a0a,#1a0505 50%,#1a0a00);border-top:2px solid var(--gold);display:flex;align-items:center;gap:16px;padding:10px 24px;box-shadow:0 -4px 30px rgba(0,0,0,.6);}
-.audio-patch{width:40px;height:40px;border-radius:50%;overflow:hidden;flex-shrink:0;border:1.5px solid var(--gold);}
+.audio-patch{width:40px;height:40px;border-radius:50%;overflow:hidden;flex-shrink:0;border:1.5px solid var(--gold);transition:box-shadow .3s;}
+@keyframes spinRecord{from{transform:rotate(0deg);}to{transform:rotate(360deg);}}
+.audio-patch.spinning{animation:spinRecord 3s linear infinite;box-shadow:0 0 12px rgba(212,160,23,.5);}
 .audio-patch img{width:100%;height:100%;object-fit:cover;}
 .audio-track-info{flex-shrink:0;min-width:0;}
 .audio-track-title{font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;letter-spacing:.1em;color:var(--gold-l);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:180px;}
@@ -262,18 +264,47 @@ section{position:relative;padding:clamp(60px,9vw,110px) clamp(20px,7vw,90px);}
 
 /* EVENTS */
 #events{background:linear-gradient(180deg,#1a0a05,#0e1a0e);} #events>.section-label,#events>.section-title{text-align:center;display:block;}
-.events-layout{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,5vw,80px);margin-top:48px;align-items:start;}
-@media(max-width:768px){.events-layout{grid-template-columns:1fr;}}
-.fb-widget-wrap{background:rgba(0,0,0,.3);border:1px solid rgba(212,160,23,.2);overflow:hidden;min-height:400px;display:flex;flex-direction:column;}
-.fb-widget-header{background:linear-gradient(90deg,#1877f2,#0d5ebd);padding:14px 20px;display:flex;align-items:center;gap:10px;font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:700;letter-spacing:.1em;color:#fff;}
-.fb-icon{width:24px;height:24px;background:#fff;border-radius:4px;display:flex;align-items:center;justify-content:center;color:#1877f2;font-family:Georgia,serif;font-weight:900;font-size:18px;line-height:1;flex-shrink:0;}
-.fb-widget-body{flex:1;padding:24px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;text-align:center;}
-#fb-events-container{width:100%;min-height:350px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;}
-.fb-placeholder-icon{width:60px;height:60px;background:rgba(24,119,242,.15);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:32px;}
-.fb-placeholder-text{font-family:'Barlow Condensed',sans-serif;font-size:15px;color:rgba(255,255,255,.45);letter-spacing:.05em;line-height:1.6;}
-.fb-placeholder-note{font-size:11px;color:rgba(255,255,255,.25);letter-spacing:.1em;font-family:'Barlow Condensed',sans-serif;border:1px dashed rgba(255,255,255,.15);padding:10px 18px;text-transform:uppercase;}
-.events-upcoming{display:flex;flex-direction:column;gap:16px;}
+
+
+
+
+
+
+
+
+
+
+
 .event-card{background:rgba(0,0,0,.25);border:1px solid rgba(212,160,23,.12);border-left:3px solid var(--crimson);padding:20px 24px;display:flex;gap:20px;align-items:flex-start;transition:.2s;}
+
+/* New events layout */
+.events-full{width:100%;}
+.events-follow-bar{display:flex;align-items:center;gap:12px;flex-wrap:wrap;justify-content:center;margin-bottom:36px;font-family:'Barlow Condensed',sans-serif;font-size:12px;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.4);}
+.follow-btn{font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;padding:7px 18px;text-decoration:none;border-radius:2px;transition:.2s;}
+.follow-btn.fb{background:rgba(24,119,242,.15);color:#1877f2;border:1px solid rgba(24,119,242,.3);}
+.follow-btn.fb:hover{background:rgba(24,119,242,.3);}
+.follow-btn.ig{background:rgba(200,16,46,.12);color:var(--crimson);border:1px solid rgba(200,16,46,.25);}
+.follow-btn.ig:hover{background:rgba(200,16,46,.25);}
+.follow-btn.tt{background:rgba(255,255,255,.06);color:rgba(255,255,255,.6);border:1px solid rgba(255,255,255,.15);}
+.follow-btn.tt:hover{background:rgba(255,255,255,.12);color:#fff;}
+.shows-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:16px;}
+.show-card{background:rgba(0,0,0,.3);border:1px solid rgba(212,160,23,.15);padding:24px;display:flex;gap:20px;align-items:flex-start;position:relative;transition:.25s;}
+.show-card:hover{border-color:rgba(212,160,23,.4);background:rgba(0,0,0,.45);transform:translateY(-2px);}
+.show-date{flex-shrink:0;min-width:58px;text-align:center;padding:10px 14px;border-radius:2px;}
+.show-date.red{background:var(--crimson);}
+.show-date.green{background:var(--green);}
+.show-month{font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.8);}
+.show-day{font-family:'Bebas Neue',sans-serif;font-size:36px;line-height:1;color:#fff;}
+.show-info{flex:1;}
+.show-name{font-family:'Barlow Condensed',sans-serif;font-size:19px;font-weight:700;color:var(--text);letter-spacing:.04em;line-height:1.2;}
+.show-venue{font-size:13px;color:rgba(255,255,255,.5);margin-top:4px;letter-spacing:.04em;}
+.show-city{font-size:12px;color:rgba(255,255,255,.35);letter-spacing:.08em;text-transform:uppercase;margin-top:2px;}
+.show-ticket{display:inline-block;margin-top:12px;font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);text-decoration:none;border-bottom:1px solid rgba(212,160,23,.3);padding-bottom:2px;transition:.2s;}
+.show-ticket:hover{color:var(--gold-l);border-color:var(--gold);}
+.show-status{position:absolute;top:14px;right:14px;font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;padding:3px 10px;border-radius:2px;}
+.show-status.upcoming{background:rgba(212,160,23,.12);color:var(--gold);border:1px solid rgba(212,160,23,.25);}
+.show-status.on-sale{background:rgba(0,104,71,.15);color:var(--green-l);border:1px solid rgba(0,104,71,.3);}
+.show-status.sold-out{background:rgba(200,16,46,.12);color:var(--crimson);border:1px solid rgba(200,16,46,.25);}
 .event-card:hover{border-left-color:var(--gold);background:rgba(0,0,0,.4);}
 .event-date-block{flex-shrink:0;text-align:center;background:var(--crimson);padding:8px 14px;min-width:52px;}
 .event-month{font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.8);}
@@ -309,11 +340,11 @@ section{position:relative;padding:clamp(60px,9vw,110px) clamp(20px,7vw,90px);}
 footer{background:#060a06;padding:22px clamp(16px,7vw,90px);display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:16px;border-top:1px solid rgba(255,255,255,.04);padding-bottom:80px;}
 @media(max-width:600px){footer{grid-template-columns:1fr;text-align:center;justify-items:center;}}
 .footer-center{display:flex;align-items:center;justify-content:center;}
-.footer-wicked-logo{height:52px;opacity:.9;filter:drop-shadow(0 0 10px rgba(200,16,46,.25));transition:.2s;}
+.footer-wicked-logo{height:52px;opacity:.85;filter:drop-shadow(0 0 10px rgba(200,16,46,.25));transition:.2s;}
 .footer-wicked-logo:hover{opacity:1;filter:drop-shadow(0 0 16px rgba(200,16,46,.5));}
-.footer-logo{display:flex;align-items:center;gap:10px;font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:.05em;color:rgba(255,255,255,.2);text-decoration:none;}
+.footer-logo{display:flex;align-items:center;gap:10px;font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:.05em;color:rgba(255,255,255,.55);text-decoration:none;}
 .footer-logo img{height:28px;opacity:.4;}
-.footer-right{font-family:'Barlow Condensed',sans-serif;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.18);text-align:right;}
+.footer-right{font-family:'Barlow Condensed',sans-serif;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.55);text-align:right;}
 </style>
 </head>
 <body>
@@ -483,6 +514,15 @@ footer{background:#060a06;padding:22px clamp(16px,7vw,90px);display:grid;grid-te
         <div class="video-title">Watch on YouTube</div>
       </div>
     </div>
+    <div class="video-card reveal">
+      <div class="video-embed">
+        <iframe src="https://www.youtube.com/embed/_b8jginxdB4?rel=0&modestbranding=1" title="Emerg Video 4" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+      </div>
+      <div class="video-info">
+        <div class="video-label">Emerg · Official Video</div>
+        <div class="video-title">Watch on YouTube</div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -495,26 +535,26 @@ footer{background:#060a06;padding:22px clamp(16px,7vw,90px);display:grid;grid-te
   <div class="shop-grid">
     <div class="product-card reveal">
       <div class="product-img-wrap" id="img1wrap">
-        <img id="product-img-1" src="https://shop.wickedentertainment.net/cdn/shop/files/rn-image_picker_lib_temp_135dca67-caa8-42a5-84fe-30b74c2f3749.jpg?v=1700092073&width=600" alt="Trust None Snapback Hat Red" onerror="document.getElementById('img1wrap').innerHTML='<div style=\'background:#1a0505;aspect-ratio:1;display:flex;align-items:center;justify-content:center;font-family:Bebas Neue,sans-serif;font-size:20px;color:#c8102e;letter-spacing:.1em;\'>TRUST NONE</div>'">
+        <img id="product-img-1" src="https://shop.wickedentertainment.net/cdn/shop/files/Emerg_Patch_tee_Shirt_White_Front_Mockup.png?v=1775533114&width=600" alt="Emerg Patch Tee Shirt" onerror="document.getElementById('img1wrap').innerHTML='<div style=\'background:#1a0a0a;aspect-ratio:1;display:flex;align-items:center;justify-content:center;font-family:Bebas Neue,sans-serif;font-size:20px;color:#c8102e;letter-spacing:.1em;\'>EMERG TEE</div>'">
         <div class="product-badge">New Drop</div>
       </div>
       <div class="product-info">
-        <div class="product-name">Trust None Snapback</div>
-        <div class="product-sub">Red — Wicked Entertainment</div>
-        <div class="product-price" id="price-1">$35.00</div>
-        <a href="https://shop.wickedentertainment.net/products/trust-none-snapback-hat-red" target="_blank" rel="noopener" class="product-cta">Buy Now →</a>
+        <div class="product-name">Emerg Patch Tee Shirt</div>
+        <div class="product-sub">Multiple Colors — Wicked Entertainment</div>
+        <div class="product-price" id="price-1">—</div>
+        <a href="https://shop.wickedentertainment.net/products/emerg-patch-tee-shirt" target="_blank" rel="noopener" class="product-cta">Buy Now →</a>
       </div>
     </div>
     <div class="product-card reveal">
       <div class="product-img-wrap" id="img2wrap">
-        <img id="product-img-2" src="https://shop.wickedentertainment.net/cdn/shop/files/bluetrustnone1.png?v=1702501516&width=600" alt="Trust None Snapback Hat Blue" onerror="document.getElementById('img2wrap').innerHTML='<div style=\'background:#0a0a1a;aspect-ratio:1;display:flex;align-items:center;justify-content:center;font-family:Bebas Neue,sans-serif;font-size:20px;color:#1877f2;letter-spacing:.1em;\'>TRUST NONE</div>'">
+        <img id="product-img-2" src="https://shop.wickedentertainment.net/cdn/shop/files/Emerg_Patch_Trucker_hat_BW_Front_Main_Mockup.png?v=1775536774&width=600" alt="Emerg Patch Trucker Hat" onerror="document.getElementById('img2wrap').innerHTML='<div style=\'background:#0a0a0a;aspect-ratio:1;display:flex;align-items:center;justify-content:center;font-family:Bebas Neue,sans-serif;font-size:20px;color:#d4a017;letter-spacing:.1em;\'>EMERG HAT</div>'">
         <div class="product-badge" style="background:var(--green)">New Drop</div>
       </div>
       <div class="product-info">
-        <div class="product-name">Trust None Snapback</div>
-        <div class="product-sub">Blue — Wicked Entertainment</div>
-        <div class="product-price" id="price-2">$35.00</div>
-        <a href="https://shop.wickedentertainment.net/products/trust-none-snapback-hat-blue" target="_blank" rel="noopener" class="product-cta" style="background:var(--green)">Buy Now →</a>
+        <div class="product-name">Emerg Patch Trucker Hat</div>
+        <div class="product-sub">B&amp;W — Wicked Entertainment</div>
+        <div class="product-price" id="price-2">—</div>
+        <a href="https://shop.wickedentertainment.net/products/emerg-patch-trucker-hat" target="_blank" rel="noopener" class="product-cta" style="background:var(--green)">Buy Now →</a>
       </div>
     </div>
   </div>
@@ -527,44 +567,81 @@ footer{background:#060a06;padding:22px clamp(16px,7vw,90px);display:grid;grid-te
 <section id="events">
   <div class="section-label reveal">Live</div>
   <h2 class="section-title reveal">Shows &amp;<br>Events</h2>
-  <div class="events-layout">
-    <div class="fb-widget-wrap reveal">
-      <div class="fb-widget-header">
-        <div class="fb-icon">f</div>
-        Facebook Events — Emerg
-      </div>
-      <div class="fb-widget-body">
-        <div id="fb-events-container">
-          <div class="fb-placeholder-icon">📅</div>
-          <div class="fb-placeholder-text">Facebook Events widget<br>will appear here</div>
-          <div class="fb-placeholder-note">Add your Facebook page URL to activate</div>
-          <a href="https://www.facebook.com/PilsenProdigy/" target="_blank" rel="noopener" class="btn btn-outline" style="font-size:11px;padding:10px 24px;">Follow on Facebook</a>
-        </div>
-      </div>
+  <!-- ╔══════════════════════════════════════════════════╗
+       ║  UPCOMING SHOWS — EDIT THIS SECTION             ║
+       ║  To add a show: copy one .show-card block        ║
+       ║  Update: data-month, data-day, name, venue, city ║
+       ║  Set data-color="red" or "green" for date badge  ║
+       ╚══════════════════════════════════════════════════╝ -->
+
+  <div class="events-full reveal">
+
+    <!-- Follow bar -->
+    <div class="events-follow-bar">
+      <span>Follow for announcements:</span>
+      <a href="https://www.facebook.com/PilsenProdigy/" target="_blank" rel="noopener" class="follow-btn fb">Facebook</a>
+      <a href="https://www.instagram.com/emerg_one" target="_blank" rel="noopener" class="follow-btn ig">Instagram</a>
+      <a href="https://www.tiktok.com/@emerg_one" target="_blank" rel="noopener" class="follow-btn tt">TikTok</a>
     </div>
-    <div class="events-upcoming reveal">
-      <div style="margin-bottom:8px;">
-        <div class="section-label" style="margin-bottom:8px;">Upcoming Shows</div>
-        <p style="font-size:13px;color:rgba(255,255,255,.35);letter-spacing:.05em;">Stay tuned — dates dropping soon. Follow on Facebook &amp; Instagram for announcements.</p>
-      </div>
-      <div class="event-card">
-        <div class="event-date-block"><div class="event-month">TBA</div><div class="event-day">—</div></div>
-        <div class="event-details">
-          <div class="event-name">Album Release Show</div>
-          <div class="event-where">📍 Chicago, IL — Venue TBA</div>
-          <a href="#contact" class="event-link">Get Info</a>
+
+    <div class="shows-grid">
+
+      <!-- ═══ ADD / EDIT SHOWS BELOW ═══ -->
+
+      <!-- SHOW 1 — Edit month, day, name, venue, city, ticket link -->
+      <div class="show-card">
+        <div class="show-date red">
+          <div class="show-month">TBA</div>
+          <div class="show-day">—</div>
         </div>
-      </div>
-      <div class="event-card">
-        <div class="event-date-block" style="background:var(--green)"><div class="event-month">TBA</div><div class="event-day">—</div></div>
-        <div class="event-details">
-          <div class="event-name">Pilsen Neighborhood Show</div>
-          <div class="event-where">📍 Pilsen, Chicago, IL</div>
-          <a href="#contact" class="event-link">Get Info</a>
+        <div class="show-info">
+          <div class="show-name">Album Release Show</div>
+          <div class="show-venue">Venue TBA</div>
+          <div class="show-city">Chicago, IL</div>
+          <a href="#contact" class="show-ticket">Get Info →</a>
         </div>
+        <div class="show-status upcoming">Upcoming</div>
       </div>
-      <a href="#contact" class="btn btn-outline" style="margin-top:8px;text-align:center;">Book Emerg for Your Event</a>
+
+      <!-- SHOW 2 — Edit month, day, name, venue, city, ticket link -->
+      <div class="show-card">
+        <div class="show-date green">
+          <div class="show-month">TBA</div>
+          <div class="show-day">—</div>
+        </div>
+        <div class="show-info">
+          <div class="show-name">Pilsen Neighborhood Show</div>
+          <div class="show-venue">Venue TBA</div>
+          <div class="show-city">Pilsen, Chicago, IL</div>
+          <a href="#contact" class="show-ticket">Get Info →</a>
+        </div>
+        <div class="show-status upcoming">Upcoming</div>
+      </div>
+
+      <!-- EXAMPLE of a filled-in show — uncomment and edit to use:
+      <div class="show-card">
+        <div class="show-date red">
+          <div class="show-month">JUL</div>
+          <div class="show-day">1</div>
+        </div>
+        <div class="show-info">
+          <div class="show-name">Wicked Since 93 Release Party</div>
+          <div class="show-venue">Thalia Hall</div>
+          <div class="show-city">Chicago, IL</div>
+          <a href="https://ticketlink.com" target="_blank" class="show-ticket">Buy Tickets →</a>
+        </div>
+        <div class="show-status on-sale">On Sale</div>
+      </div>
+      -->
+
+      <!-- ═══ END SHOWS ═══ -->
+
     </div>
+
+    <div style="text-align:center;margin-top:32px;">
+      <a href="#contact" class="btn btn-outline">Book Emerg for Your Event</a>
+    </div>
+
   </div>
 </section>
 
@@ -677,8 +754,8 @@ playBtn.addEventListener('click',()=>{
   if(!audio.src){ trackTitle.textContent='Add MP3 URL to activate'; return; }
   isPlaying ? audio.pause() : audio.play().catch(()=>{});
 });
-audio.addEventListener('play',()=>{ isPlaying=true; playIcon.style.display='none'; pauseIcon.style.display='block'; });
-audio.addEventListener('pause',()=>{ isPlaying=false; playIcon.style.display='block'; pauseIcon.style.display='none'; });
+audio.addEventListener('play',()=>{ isPlaying=true; playIcon.style.display='none'; pauseIcon.style.display='block'; document.querySelector('.audio-patch').classList.add('spinning'); });
+audio.addEventListener('pause',()=>{ isPlaying=false; playIcon.style.display='block'; pauseIcon.style.display='none'; document.querySelector('.audio-patch').classList.remove('spinning'); });
 audio.addEventListener('ended',()=>loadTrack((currentTrack+1)%tracks.length));
 audio.addEventListener('timeupdate',()=>{
   if(!audio.duration) return;
@@ -706,8 +783,8 @@ async function fetchProduct(handle, imgId, priceId){
     }
   }catch(e){}
 }
-fetchProduct('trust-none-snapback-hat-red','product-img-1','price-1');
-fetchProduct('trust-none-snapback-hat-blue','product-img-2','price-2');
+fetchProduct('emerg-patch-tee-shirt','product-img-1','price-1');
+fetchProduct('emerg-patch-trucker-hat','product-img-2','price-2');
 </script>
 </body>
 </html>
