@@ -1,0 +1,21 @@
+{
+  "name": "EMERG — Pilsen's Own",
+  "short_name": "EMERG",
+  "description": "Chicago rapper Emerg — Chicano Rap & Latin Hip-Hop from Pilsen. Wicked Entertainment Network.",
+  "icons": [
+    {
+      "src": "/images/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/images/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#c8102e",
+  "background_color": "#000000",
+  "display": "standalone",
+  "start_url": "/"
+}

@@ -1,7 +1,7 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://emergmusic.netlify.app/sitemap.xml
+Sitemap: https://emergmusic.com/sitemap.xml
 
 # Block access to internal Netlify paths
 Disallow: /.netlify/
